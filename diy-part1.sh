@@ -13,4 +13,4 @@
 
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-sed -i '$a src-git luci-app-openclash https://github.com/vernesong/OpenClash' feeds.conf.default
+sed -i '$a src-git openclash https://github.com/vernesong/OpenClash' feeds.conf.default

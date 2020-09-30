@@ -18,9 +18,9 @@ on:
     branches:
       - main
     paths:
-      - 'rpi4.config'
+      - "rpi4.config"
  schedule:
-   - cron: 0 7 * * *
+   - cron: '0 7 * * *'
 #  watch:
 #    types: started
 

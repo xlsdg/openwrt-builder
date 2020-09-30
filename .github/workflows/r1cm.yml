@@ -18,7 +18,7 @@ on:
     branches:
       - main
     paths:
-      - r1cm.config
+      - "r1cm.config"
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:

@@ -18,7 +18,7 @@ on:
     branches:
       - main
     paths:
-      - rpi3.config
+      - 'rpi3.config'
  schedule:
    - cron: 0 7 * * *
 #  watch:

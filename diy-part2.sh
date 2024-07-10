@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.7/g' package/base-files/files/bin/config_generate
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
@@ -21,14 +21,23 @@
 
 mkdir -p files/etc/openclash/core
 
-CLASH_TUN_URL=$(curl -fsSL https://api.github.com/repos/vernesong/OpenClash/contents/master/premium?ref=core | grep download_url | grep /clash-linux-amd64-2 | awk -F '"' '{print $4}')
-CLASH_TUN_V3_URL=$(curl -fsSL https://api.github.com/repos/vernesong/OpenClash/contents/master/premium?ref=core | grep download_url | grep /clash-linux-amd64-v3-2 | awk -F '"' '{print $4}')
+CLASH_DEV_URL=$(curl -fsSL 'https://api.github.com/repos/vernesong/OpenClash/contents/master/dev?ref=core' | grep download_url | grep /clash-linux-amd64.tar.gz | awk -F '"' '{print $4}')
+CLASH_DEV_V3_URL=$(curl -fsSL 'https://api.github.com/repos/vernesong/OpenClash/contents/master/dev?ref=core' | grep download_url | grep /clash-linux-amd64-v3.tar.gz | awk -F '"' '{print $4}')
 
-# CLASH_TUN_URL=$(curl -fsSL https://api.github.com/repos/Dreamacro/clash/releases/tags/premium | grep /clash-linux-amd64-2 | awk -F '"' '{print $4}')
-# CLASH_TUN_V3_URL=$(curl -fsSL https://api.github.com/repos/Dreamacro/clash/releases/tags/premium | grep /clash-linux-amd64-v3-2 | awk -F '"' '{print $4}')
+wget -qO- $CLASH_DEV_URL | gunzip -c > files/etc/openclash/core/clash
+wget -qO- $CLASH_DEV_V3_URL | gunzip -c > files/etc/openclash/core/clash_v3
+
+CLASH_TUN_URL=$(curl -fsSL 'https://api.github.com/repos/vernesong/OpenClash/contents/master/premium?ref=core' | grep download_url | grep /clash-linux-amd64-2 | awk -F '"' '{print $4}')
+CLASH_TUN_V3_URL=$(curl -fsSL 'https://api.github.com/repos/vernesong/OpenClash/contents/master/premium?ref=core' | grep download_url | grep /clash-linux-amd64-v3-2 | awk -F '"' '{print $4}')
 
 wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
-wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun_v3
+wget -qO- $CLASH_TUN_V3_URL | gunzip -c > files/etc/openclash/core/clash_tun_v3
+
+CLASH_META_URL=$(curl -fsSL 'https://api.github.com/repos/vernesong/OpenClash/contents/master/meta?ref=core' | grep download_url | grep /clash-linux-amd64.tar.gz | awk -F '"' '{print $4}')
+CLASH_META_V3_URL=$(curl -fsSL 'https://api.github.com/repos/vernesong/OpenClash/contents/master/meta?ref=core' | grep download_url | grep /clash-linux-amd64-v3.tar.gz | awk -F '"' '{print $4}')
+
+wget -qO- $CLASH_META_URL | gunzip -c > files/etc/openclash/core/clash_meta
+wget -qO- $CLASH_META_V3_URL | gunzip -c > files/etc/openclash/core/clash_meta_v3
 
 chmod +x files/etc/openclash/core/clash*
 

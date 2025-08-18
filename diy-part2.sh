@@ -43,3 +43,6 @@ sed -i 's/192.168.1.1/192.168.88.4/g' package/base-files/files/bin/config_genera
 
 # COUNTRY_URL=https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
 # wget -qO- $COUNTRY_URL > files/etc/openclash/Country.mmdb
+
+# Set Rust build arg llvm.download-ci-llvm to false.
+sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile

@@ -77,8 +77,8 @@ jobs:
       uses: stupidloud/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: "${{ env.TARGET_PROFILE }}"
-        prefix: ${{ github.workspace }}/openwrt
+        mixkey: "x86-64"
+        prefix: $GITHUB_WORKSPACE/openwrt
 
     - name: Load custom feeds
       run: |

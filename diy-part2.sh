@@ -23,4 +23,4 @@ find . -type d -iname "*openclash*" -exec rm -rf {} + 2>/dev/null || true
 git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
 # Set Rust build arg llvm.download-ci-llvm to false.
-sed -i 's/--set=llvm\.download-ci-llvm=false/--set=llvm\.download-ci-llvm=true/' feeds/packages/lang/rust/Makefile
+sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm\.download-ci-llvm=if-unchanged/' feeds/packages/lang/rust/Makefile

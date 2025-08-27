@@ -78,7 +78,7 @@ jobs:
       with:
         ccache: 'true'
         mixkey: "x86-64"
-        prefix: $GITHUB_WORKSPACE/openwrt
+        prefix: ${{ github.workspace }}/openwrt
 
     - name: Load custom feeds
       run: |
